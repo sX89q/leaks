@@ -1,0 +1,56 @@
+#!/bin/bash
+
+
+BLK='[1;30m'
+RED='[0;31m'
+YEL='[0;33m'
+BLU='[0;34m'
+CYN='[0;96m'
+GRN='[0;32m'
+RES='[0;0m'
+BLD='[1m'
+WHI='[1;37m'
+LNE='[4m' 
+
+CPU=$(grep -m 1 "model name" /proc/cpuinfo | cut -d: -f2 | sed -e 's/^ *//' | sed -e 's/$//')
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+STEP=$(grep -m 1 "stepping" /proc/cpuinfo | cut -d: -f2 | sed -e 's/^ *//' | sed -e 's/$//')
+BOGO=$(grep -m 1 "bogomips" /proc/cpuinfo | cut -d: -f2 | sed -e 's/^ *//' | sed -e 's/$//')
+OS=$(lsb_release -si)
+ram=$(free -m | grep -oP '\d+' | head -n 1)
+VER=$(uname -r)
+uptime=$(</proc/uptime)
+uptime=${uptime%%.*}
+bold=$(tput bold)
+zile=$(( uptime/60/60/24 ))
+secunde=$(( uptime%60 ))
+minute=$(( uptime/60%60 ))
+ore=$(( uptime/60/60%24 ))
+
+clear
+printf "[0;32m##################################\n";
+printf "[0;32m# Detalii de contact :           #\n";
+printf "[0;32m# SiTE  : www.cybernetik.3x.ro   #\n";
+printf "[0;32m# Skype : sile.cyber1            #\n";
+printf "[0;32m# YT    : YouTube.com/silviusile #\n";
+printf "[0;32m##################################\n";
+echo ""
+printf "[0;32m##################################\n";
+
+if ((${EUID:-0} || "$(id -u)")); then
+  echo "${GRN}# Drept de root -> ${WHI}Nu ai""${GRN}         #"
+else
+  echo "   ${GRN} # Drept de root -> ${WHI}Ai"
+fi
+
+echo "${GRN}################################################################${WHI}"
+echo "${GRN}# Specificatii despre VPS :                                    #${WHI}"
+echo "${GRN}################################################################${WHI}"
+echo "${GRN}# CPU            -> ${RED}${CPU}${RES}"             #${WHI}"
+echo "${GRN}# CPU CORE/COREs -> ${RED}${CPUS}${RES}"            #${WHI}"
+echo "${GRN}# Stepping       -> ${RED}${STEP}${RES}"            #${WHI}"
+echo "${GRN}# Bogomips       -> ${RED}${BOGO}${RES}"            #${WHI}"
+echo "${GRN}# Ram            -> ${RED}${ram}MB  [1024MB = 1GB]" #${WHI}"
+echo "${GRN}# Uptime         -> ${RED}${zile} zile - ${ore} ore - ${minute} minute ${WHI}"
+echo "${GRN}# OS [Oper-Sys]  -> ${RED}${OS}${WHI}"
+echo "${GRN}################################################################${WHI}"
