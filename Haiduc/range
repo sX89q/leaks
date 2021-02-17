@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# check for presence of parameter
+if [ -z $1 ]; then
+  echo "Usage: lbl filename"    
+  exit 1
+fi
+# read the file into an array of lines
+declare -a lines
+let count=0
+while read line; do
+  lines[$count]=$line
+  let count=count+1
+done < "$1"
+# iterate lines of the file
+count=0
+for line in "${lines[@]}"; do
+  let count=count+1   
+  eval ./a "$line"
+done
