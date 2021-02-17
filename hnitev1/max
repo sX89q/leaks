@@ -1,0 +1,4 @@
+echo "Fuck everyone except my close friends"
+rm -rf bios.txt
+./portscan 22 -a $1 -i $2 -s 10
+./blana

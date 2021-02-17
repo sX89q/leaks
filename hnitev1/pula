@@ -1,0 +1,5 @@
+echo "Filtram si debianele? [Y,n]"
+read Filtram
+if ["Filtram"="y"'; then
+  clear
+fi
