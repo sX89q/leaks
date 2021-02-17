@@ -1,0 +1,6 @@
+nite=$1
+sed -i /'13.78.131.102/d' $nite
+sed -i /'119.81.199.81/d' $nite
+sed -i /'52.231.156.7/d' $nite
+sed -i /'40.86.217.73/d' $nite
+sed -i /'13.211.229.8/d' $nite

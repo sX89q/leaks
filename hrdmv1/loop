@@ -1,0 +1,6 @@
+while :
+do
+./hrdmv1
+pkill brute
+pkill shitscanner
+done

