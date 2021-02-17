@@ -1,0 +1,9 @@
+./banner scan.log 22 3500
+pkill banner
+sleep 1
+sed -i /'Debian-5ubuntu1/d' banner.log
+sed -i /'Debian-10+deb9u2/d' banner.log
+sed -i /'SSH-2.0-OpenSSH_6.7p1/d' banner.log
+cat banner.log  |grep SSH-2.0-OpenSSH |awk '{print $1}' |uniq |shuf >> mfu.txt
+./update 15000
+
