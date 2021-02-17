@@ -1,0 +1,7 @@
+#!/bin/bash
+B=$1
+while read line; do
+cat vuln.txt |grep -v "$line" >>vuln1.txt
+mv vuln1.txt vuln.txt
+sleep 1
+done < $B

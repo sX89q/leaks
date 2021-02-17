@@ -1,0 +1,11 @@
+#!/bin/bash
+while :
+do
+#SMU Random Infinite Class
+#################################
+RANGE=254
+number=$RANDOM
+let "number %= $RANGE"
+#################################
+./go $number
+done

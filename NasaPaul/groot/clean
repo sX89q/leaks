@@ -1,0 +1,11 @@
+echo -e "[SSH] Curatam..."
+./1 vuln.txt
+sleep 2
+cat dup.txt |sort -u >>dup2.txt
+./2 dup2.txt
+sleep 2
+./3 vuln.txt
+sleep 2
+rm -rf dup.txt dup2.txt bios.txt cleanlist mfu.txt
+cat eof.txt
+rm -rf vuln.txt

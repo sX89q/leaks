@@ -1,0 +1,11 @@
+#!/bin/bash
+B=$1
+while read line; do
+dup=$(echo $line |cut -d " " -f 1)
+if [ $dup ] ; then
+if [ $dup == DUP ] ; then
+ip=$(echo $line |cut -d ":" -f 3)
+ echo "$ip" >>dup.txt
+fi
+fi
+done < $B
