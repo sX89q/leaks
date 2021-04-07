@@ -1,0 +1,25 @@
+FILE=gasite.txt
+if [ -f "$FILE" ]; then
+  echo " "   
+else 
+    exit;
+fi
+
+grep -v "DVDSrv" gasite.txt > temp
+grep -v "pos01" temp > temp2
+grep -v "raspberry" temp2 > temp3
+grep -v "Error" temp3 > temp4
+grep -v "Please login" temp4 > temp5
+grep -v "sh-4.3" temp5 > temp6
+grep -v "06:20:54" temp6 > temp7
+grep -v "ERROR" temp7 > temp8
+grep -v "22:33:07" temp8 > temp9
+grep -v "3.2.68-1+deb7u1" temp9 > temp10
+grep -v "PREEMPT" temp10 > temp11
+grep -v "This service allows sftp connections only." temp11 > temp12
+grep -v "This account is currently not available." temp12 > temp13
+grep -v "uname: Invalid argument" temp13 > temp14
+sed '/^\s*$/d' temp14 > good
+sleep 0.5
+rm -rf temp temp1 temp2 temp3 temp4 temp5 temp6 temp7 temp8 temp9 temp10 temp11 temp12 temp13 temp14 temp15 temp16
+sleep 1

