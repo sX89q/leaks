@@ -1,0 +1,5 @@
+touch vuln.txt ; chmod +x vuln.txt
+echo "Incepe scanarea !!! # `grep -c . iplist` IP-uri gasite"
+./zmeu iplist vuln.txt 7000 cgi
+
+
