@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "------------------"
+echo "View Linux:"
+cat gasite.txt |grep Linux |grep -v armv |grep -v mips |grep -v sh4 |grep -v ppc
+echo "------------------"
+echo "View Darwin:"
+cat sparte.txt |grep Darwin
+echo "------------------"
+echo "View AIX:"
+cat sparte.txt |grep AIX
+echo "------------------"
+echo "View HP:"
+cat sparte.txt |grep HP
+echo "------------------"
+echo "View BSD:"
+cat sparte.txt |grep BSD
+echo "------------------"
+echo "View SunOS:"
+cat sparte.txt |grep SunOS
+echo "------------------"

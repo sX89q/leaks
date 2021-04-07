@@ -1,0 +1,16 @@
+grep -v "DVDSrv" gasite.txt > temp
+grep -v "pos01" temp > temp2
+grep -v "raspberry" temp2 > temp3
+grep -v "Error" temp3 > temp4
+grep -v "Please login" temp4 > temp5
+grep -v "sh-4.3" temp5 > temp6
+grep -v "User name or password is wrong, please try it again!" temp6 > temp7
+grep -v "ERROR" temp7 > temp8
+grep -v "sshd listensocks[15]" temp8 > temp9
+grep -v "3.2.68-1+deb7u1" temp9 > temp10
+grep -v "PREEMPT" temp10 > temp11
+grep -v "This service allows sftp connections only." temp11 > temp12
+grep -v "This account is currently not available." temp12 > temp13
+sed '/^\s*$/d' temp13 > filtered
+sleep 2
+rm -rf temp temp1 temp2 temp3 temp4 temp5 temp6 temp7 temp8 temp9 temp10 temp11 temp12 temp13 
