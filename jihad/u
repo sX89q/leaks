@@ -1,0 +1,2 @@
+#!/bin/bash
+./spargator 3000 -b $1 passfile 22 "uname -a & lscpu"
