@@ -1,0 +1,57 @@
+#!/bin/bash
+
+if [[ $(id -u) -ne 0 ]];
+then
+	clear
+	echo -e "\e[38;5;50m[\e[38;5;231m-\e[38;5;50m]\e[38;5;231m You need to run this with sudo or as root\e[0m"
+	exit;
+fi
+
+if [[ $# != 3 ]];
+then
+	clear
+	echo -e "\033[38;5;231m[\033[38;5;196mSyntax\033[38;5;231m]: $0 [fisier clase] [port] [rate (100000 recommended)]\033[0m"
+	exit;
+fi
+
+if [[ ! -f "./.sozn" ]];
+then
+	clear
+	sleep 2
+	echo -e "\e[38;5;50m[\e[38;5;231m+\e[38;5;50m]\e[38;5;231m Please use './installmasscan' first!\e[0m"
+	exit;
+else
+	rm -rf nodups.txt scan.lst banner.log templst.txt ips.lst
+	
+	while IFS= read -r line
+	do
+		clear
+		
+		echo " "
+		echo -e "\033[38;5;231m[\033[38;5;048mOZN Range\033[38;5;231m]: Now scanning range [\033[38;5;048m$line\033[38;5;231m] on port [\033[38;5;048m$2\033[38;5;231m]\e[0m"
+
+		./.sozn $line -p$2 --max-rate $3 --exclude 255.255.255.255 --exclude 10.0.0.0/8 --exclude 192.168.0.0/16 --exclude 127.0.0.0/8 -oL scan.lst
+		cat scan.lst | awk '{ print $4 }' > templst.txt
+		
+		sort -u templst.txt > nodups.txt
+		rm -rf scan.lst templst.txt
+		
+		sleep 2
+		
+		./.bozn 1500 $2 nodups.txt
+		rm -rf nodups.txt
+		
+		sleep 1
+	done < "$1"
+	
+	./.fozn banner.log
+	sleep 2
+	
+	iplistlines=`grep -c . ips.lst`
+	
+	clear
+	echo -e "\033[38;5;231m[\033[38;5;048mOZN Range\033[38;5;231m]: Done, your ipslist size is [\033[38;5;048m$iplistlines\033[38;5;231m] ips!\e[0m"
+	sleep 1
+	
+	rm -rf nodups.txt scan.lst banner.log templst.txt
+fi

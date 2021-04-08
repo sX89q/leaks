@@ -1,0 +1,46 @@
+#!/bin/bash
+
+RES='\033[0m'
+WHT='\033[38;5;231m'
+RED='\033[38;5;124m'
+YEL='\033[38;4;226m'
+MAG='\033[38;5;165m'
+PRP='\033[38;5;093m'
+
+NGRN='\033[38;5;048m'
+NBLU='\033[38;5;051m'
+NORA='\033[38;5;202m'
+NRED='\033[38;5;196m'
+
+if [ $# != 2 ]; then
+    echo -e "$NRED[$NGRN-$NRED] ${WHT}Syntax: $0 <authkey> <user>$RES"
+	exit;
+fi
+
+get_random_num() {
+	num=$((( RANDOM % 254 ) + 1))
+	echo $num
+}
+
+denyranges=(0 127 10 192 10 12 3 255 254 253 252 251 250 249 248 247 246 245)
+
+get_scan_class() {
+	a=`get_random_num`
+	b=`get_random_num`
+	
+	for num in "${denyranges[@]}";
+	do
+		if [[ "$a" = "$num" ]];
+		then
+			a=45
+		fi
+	done
+	
+	echo "$a.$b"
+}
+
+while :
+do
+	class=`get_scan_class`
+	./ozn "$class" "$1" "$2"
+done

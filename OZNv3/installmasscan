@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [[ $(id -u) -ne 0 ]];
+then
+	clear
+	echo -e "\e[38;5;50m[\e[38;5;231m-\e[38;5;50m]\e[38;5;231m You need to run this with sudo or as root\e[0m"
+	sleep 2
+	exit;
+fi
+
+if [[ ! -f "./.sozn" ]];
+then
+	tempdir=$PWD
+
+	clear
+	apt update -y ; apt upgrade -y
+	apt install curl wget git gcc make libpcap-dev -y || yum install curl wget git gcc make cmake libpcap libpcap-devel libpcap.i686 -y || dnf --enablerepo=PowerTools install libpcap-devel
+	sleep 1
+	git clone https://github.com/robertdavidgraham/masscan
+	cd masscan
+	make -j$(nproc)
+	make regress
+	
+	sleep 2
+	cp bin/masscan $tempdir/.sozn
+	
+	clear
+	sleep 2
+	
+	cd $tempdir
+	rm -rf masscan
+	
+	clear
+	sleep 2
+	echo -e "\e[38;5;50m[\e[38;5;231m+\e[38;5;50m]\e[38;5;231m Masscan installed - install script autodestroy!\e[0m"
+	
+	rm -- "$0"
+else
+	clear
+	echo -e "\e[38;5;50m[\e[38;5;231m-\e[38;5;50m]\e[38;5;231m You have masscan aleardy installed!\e[0m"
+	sleep 2
+	exit;
+fi

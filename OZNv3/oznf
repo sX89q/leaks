@@ -1,0 +1,35 @@
+#!/bin/bash
+
+RES='\033[0m'
+WHT='\033[38;5;231m'
+RED='\033[38;5;124m'
+YEL='\033[38;4;226m'
+MAG='\033[38;5;165m'
+PRP='\033[38;5;093m'
+
+NGRN='\033[38;5;048m'
+NBLU='\033[38;5;051m'
+NORA='\033[38;5;202m'
+NRED='\033[38;5;196m'
+
+if [[ $# != 3 ]];
+then
+	echo -e "$NRED[$NGRN-$NRED] ${WHT}Syntax: $0 <fisier clase> <authkey> <user>$RES"
+	exit;
+fi
+
+if [[ ! -f "$1" ]];
+then
+	clear
+	echo -e "$NRED[$NGRN-$NRED] ${WHT}Fisierul ${NRED}$1 ${WHT}nu exista!$RES"
+	exit;
+fi
+
+while IFS= read -r clasa
+do
+	clear
+	echo -e "${NRED}[${NGRN}GOF${NRED}]${WHT}: ${NGRN}Acum scanam clasa ${NBLU}$clasa${RES}"
+	sleep 3
+	
+	./ozn "$clasa" "$2" "$3"
+done < "$1"
