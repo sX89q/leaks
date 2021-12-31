@@ -1,0 +1,7 @@
+plans:
+
+null = 0 bots
+plan1 = 100 bots
+plan2 = 1000 bots
+plan3 = 5000 bots
+all = all connected bots
