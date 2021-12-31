@@ -1,0 +1,56 @@
+yum update -y
+yum install epel-release -y
+yum groupinstall "Development Tools" -y
+yum install gmp-devel -y
+sudo ln -s /usr/lib64/libgmp.so.3  /usr/lib64/libgmp.so.10
+yum install gcc gcc-c++ electric-fence sudo mysql-server git libc6-dev﻿ -y
+
+cd /tmp
+rm -rf /usr/local/go
+wget https://dl.google.com/go/go1.13.5.linux-armv6l.tar.gz
+tar -zxvf go1.13.5.linux-armv6l.tar.gz && mv go /usr/local && rm -fr go1.13.5.linux-armv6l.tar.gz
+ln -f -s /usr/local/go/bin/go /usr/local/bin/go
+ln -f -s /usr/local/go/bin/godoc /usr/local/bin/godoc
+ln -f -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
+go version
+
+mkdir /etc/xcompile && cd /etc/xcompile
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-armv4l.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-i586.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-m68k.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mips.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-mipsel.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-powerpc.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-sh4.tar.bz2
+wget https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-sparc.tar.bz2
+wget http://distro.ibiblio.org/slitaz/sources/packages/c/cross-compiler-armv6l.tar.bz2
+tar -jxf cross-compiler-armv4l.tar.bz2
+tar -jxf cross-compiler-i586.tar.bz2
+tar -jxf cross-compiler-m68k.tar.bz2
+tar -jxf cross-compiler-mips.tar.bz2
+tar -jxf cross-compiler-mipsel.tar.bz2
+tar -jxf cross-compiler-powerpc.tar.bz2
+tar -jxf cross-compiler-sh4.tar.bz2
+tar -jxf cross-compiler-sparc.tar.bz2
+tar -jxf cross-compiler-armv6l.tar.bz2
+rm -rf *.tar.bz2
+mv cross-compiler-armv4l armv4l
+mv cross-compiler-i586 i586
+mv cross-compiler-m68k m68k
+mv cross-compiler-mips mips
+mv cross-compiler-mipsel mipsel
+mv cross-compiler-powerpc powerpc
+mv cross-compiler-sh4 sh4
+mv cross-compiler-sparc sparc
+mv cross-compiler-armv6l armv6l
+
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/Documents/go
+
+service iptables stop
+/etc/ini.d/iptbales stop
+
+mysql_secure_installation
+service mysqld restart
+
+ ./build.sh

