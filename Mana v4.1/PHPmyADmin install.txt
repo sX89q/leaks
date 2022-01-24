@@ -1,0 +1,14 @@
+Commands to install PHPMyAdmin:
+
+yum update -y && yum install httpd php wget nano -y && service iptables stop && chkconfig iptables off
+sudo yum install epel-release -y
+yum update
+yum install httpd mysql-server php  -y
+service mysql start
+yum install php
+yum install phpmyadmin -y
+
+nano /etc/httpd/conf.d/phpMyAdmin.conf
+change ip
+
+service httpd restart

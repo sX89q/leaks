@@ -1,0 +1,38 @@
+IP: 217.91.102.147 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 217.69.15.153 User: root Pass: root Dbs: 1337 OS:
+IP: 217.22.19.43 User: root Pass: root Dbs: 1337 OS:
+IP: 216.97.34.70 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.55.98.111 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.55.98.113 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.55.98.134 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.55.98.135 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.55.98.136 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.97.38.66 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.97.117.39 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.97.125.96 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.157.69.10 User: root Pass:  Dbs: 1337 OS:Linux
+IP: 216.70.81.53 User: root Pass:  Dbs: 1337 OS:Linux
+IP: 216.172.164.25 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.97.19.95 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.83.154.50 User: maria Pass:  Dbs: 1337 OS:Linux
+IP: 216.14.116.139 User: root Pass:  Dbs: 1337 OS:debian-linux-gnu
+IP: 216.14.116.141 User: root Pass:  Dbs: 1337 OS:debian-linux-gnu
+IP: 216.172.165.18 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.14.116.190 User: root Pass:  Dbs: 1337 OS:debian-linux-gnu
+IP: 216.196.237.24 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.25 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.26 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.27 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.28 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.29 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.30 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.196.237.31 User: admin Pass:  Dbs: 1337 OS:Win64
+IP: 216.97.68.27 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.70.86.192 User: root Pass:  Dbs: 1337 OS:Linux
+IP: 216.55.97.111 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.55.97.113 User: root Pass:  Dbs: 1337 OS:FreeBSD10.2
+IP: 216.198.218.160 User: admin Pass: admin123 Dbs: 1337 OS:Linux
+IP: 216.221.171.7 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.221.173.15 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.221.175.15 User: admin Pass:  Dbs: 1337 OS:Linux
+IP: 216.222.148.100 User: admin Pass:  Dbs: 1337 OS:Win32

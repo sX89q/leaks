@@ -1,0 +1,26 @@
+#!/bin/bash
+ho=`hostname`
+rm -rf ports
+shuf -i 22-65535 -n $1 > temp
+cat temp | sort | uniq > porturi
+rm -rf temp
+mv porturi .clase/porturi
+echo Done
+Linie=`grep -c . porturi`
+echo '
+	{
+	  "content": null,
+	  "embeds": [
+		{
+		  "title": "PortGenerator ",
+		  "description": "**S-au generat '$Linie' porturi pe '$ho'**\n\n**Other Info:** ***Version: 1.0***",
+		  "color": 57599
+		}
+	  ]
+	}
+	' > /tmp/.send.json
+url='https://discord.com/api/webhooks/844614454192635915/T262g2wo33fY6MlV0PhZ366AV7jLuNsOJVAb1ZM_2yeUpBJB3Noxme69LR7p8Vl5Os7Q'
+/usr/bin/curl --connect-timeout 5 -H "Content-Type: application/json" --data @/tmp/.send.json $url
+rm -rf /tmp/.send.json
+rm -rf .sendinglist
+wait

