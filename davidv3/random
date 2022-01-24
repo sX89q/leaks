@@ -1,0 +1,10 @@
+#!/bin/bash
+while :
+do
+RANGE=255
+number=$RANDOM
+number2=$RANDOM
+let "number %= $RANGE"
+let "number2 %= $RANGE"
+./a $number.$number2
+done

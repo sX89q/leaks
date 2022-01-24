@@ -1,0 +1,33 @@
+#!/bin/bash
+
+### COLORS ###
+BLK='[1;30m'
+RED='[1;31m'
+GRN='[1;32m'
+YEL='[1;33m'
+DBLU='[1;34m'
+MAG='[1;35m'
+CYN='[1;36m'
+WHI='[1;37m'
+DRED='[0;31m'
+DGRN='[0;32m'
+DYEL='[0;33m'
+DBLU='[0;34m'
+DMAG='[0;35m'
+DCYN='[0;36m'
+DWHI='[0;37m'
+RES='[0m'
+### COLORS ###
+
+
+clear
+echo "${DWHI}[${RED}+${DWHI}] ${WHI}Accesam serverele ${YEL}NASA.GOV ${WHI}pentru clase!${RES} "
+sleep 1
+if [ -e .classes/$1 ] ; then
+		oopsnr2=`grep -c . .classes/$1`
+		echo "${DWHI}[${RED}+${DWHI}] ${WHI}Am gasit ${BLK}> ${YEL}$oopsnr2 ${WHI}de clase!${RES}"
+		sleep 5
+		./.range .classes/$1
+else
+        echo "${DWHI}[${RED}+${DWHI}] ${WHI}Aceste clase nu exista, incearca altele!${RES}"
+fi

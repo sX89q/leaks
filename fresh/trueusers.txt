@@ -1,0 +1,12 @@
+93.96.179.57:vmware:vmware
+93.96.180.66:oracle:oracle
+93.96.38.241:oracle:oracle
+93.96.110.139:xbox:xbox
+93.96.164.76:admin:123
+87.106.2.65:test:password
+85.115.96.193:video:video
+85.115.96.219:video:video
+93.64.61.4:admin:admin
+92.114.86.10:admin:admin
+92.114.86.220:admin:admin
+208.17.71.48:boss:boss

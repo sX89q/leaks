@@ -1,0 +1,10 @@
+#!/bin/bash
+while :
+do
+RANGE=223
+number=$RANDOM
+let "number %= $RANGE"
+./a $number
+./clear
+done
+

