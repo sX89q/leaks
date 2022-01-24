@@ -1,0 +1,47 @@
+#!/bin/bash
+
+RES='\033[0m'
+WHT='\033[38;5;231m'
+RED='\033[38;5;124m'
+YEL='\033[38;4;226m'
+MAG='\033[38;5;165m'
+PRP='\033[38;5;093m'
+
+NGRN='\033[38;5;048m'
+NBLU='\033[38;5;051m'
+NORA='\033[38;5;202m'
+NRED='\033[38;5;196m'
+
+if [[ $# != 1 ]];
+then
+	clear
+	echo -e "${NRED}Syntax${WHT}: $0 [asn-numbers]${RES}"
+	exit;
+fi
+
+random() {
+	echo $(( RANDOM % 65535 ))
+}
+
+asnnum=$1
+asnout=$2
+
+if [[ ! -d "asn" ]];
+then
+	mkdir asn
+fi
+
+clear
+
+declare -i asndone=0
+while [ $asndone != $asnnum ];
+do
+	num=$(random)
+	whois -h whois.radb.net "!gas$num" | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\/[0-9]\{1,\}' | sort -u >> asn/as$num-ranges.lst
+	
+	let "asndone++"
+	
+	echo -e "${WHT}[${NRED}!${WHT}] Generating asn (${NGRN}$asndone${WHT}/${NRED}$asnnum${WHT}) - (${PRP}AS$num${WHT})${RES}"
+done
+
+echo -e "${WHT}[${NGRN}!${WHT}] Done${RES}"
