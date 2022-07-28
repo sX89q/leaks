@@ -1,2 +1,2 @@
 # leaks
-These leaked scripts and archives were not tested, use only at your own risk.
+This is to be used for legal purposes ONLY. Only use this on systems that you are allowed to.
