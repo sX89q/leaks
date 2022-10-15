@@ -1,0 +1,12 @@
+#!/bin/bash
+echo
+echo "Enter A class range"
+read brange
+echo "Enter output file"
+read file
+crange=0
+while [ $crange -lt 255 ] ; do
+        echo -n "./assh $brange.$crange ; " >> $file
+        let crange=crange+1
+done
+

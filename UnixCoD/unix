@@ -1,0 +1,49 @@
+#!/bin/bash
+BLACK='\e[0;30m'
+BLUE='\e[0;34m'
+GREEN='\e[0;32m'
+CYAN='\e[0;36m'
+RED='\e[0;31m'
+PURPLE='\e[0;35m'
+BROWN='\e[0;33m'
+LIGHTGRAY='\e[0;37m'
+DARKGRAY='\e[1;30m'
+LIGHTBLUE='\e[1;34m'
+LIGHTGREEN='\e[1;32m'
+LIGHTCYAN='\e[1;36m'
+LIGHTRED='\e[1;31m'
+LIGHTPURPLE='\e[1;35m'
+YELLOW='\e[1;33m'
+WHITE='\e[1;37m'
+NC='\e[0m'              # No Color
+if [ $# != 1 ]; then
+        echo "[+] Folosim : $0 [b class]"
+        exit;
+fi
+clear
+echo -e " ${WHITE} "
+echo -e "-----------------------------------------------"
+echo -e "| ${RED}This is a very old scanner that many people${WHITE} |"
+echo -e "|      ${RED}dont realize that it still works.${WHITE}      |"
+echo -e "-----------------------------------------------"
+echo -e "| ${RED}The return of UnixCod brought back by Rtos${WHITE}  |"
+echo -e "-----------------------------------------------"
+echo -e "| ${RED}If you do not know how to use this scanner,${WHITE} |"
+echo -e "|  ${RED}then fuck off and dont even bother with${WHITE}    |"
+echo -e "|               ${RED}figuring it out.${WHITE}              |"
+echo -e "-----------------------------------------------\n"
+./find $1 22 
+
+sleep 10
+cat $1.find.22 |sort |uniq > ip.conf
+oopsnr2=`grep -c . ip.conf`
+echo -e " ${WHITE} "
+echo -e "-----------------------------------------------"
+echo -e "|        ${RED}Scanner Based Off Of UnixCoD${WHITE}         |"
+echo -e "-----------------------------------------------"
+./atack 100
+rm -rf $1.find.22 ip.conf
+echo -e " ${WHITE} "
+echo -e "-----------------------------------------------"
+echo -e "|             ${LIGHTGREEN}Scanner Finished!${WHITE}               |"
+echo -e "-----------------------------------------------"
