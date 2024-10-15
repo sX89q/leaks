@@ -1,0 +1,20 @@
+COMMAND FOR RUNNING SCRIPT WITH NO ERROR
+
+IF MENU ITS CALL menu.txt rename to menu
+
+yum install dstat
+
+yum install cpan
+
+cpan force install Time::HiRes
+
+chmod 777 * (to the directory of the script)
+
+yum install dos2unix 
+
+find file-path -type f -exec dos2unix {} \;
+
+#ENJOY ;) !
+
+CONTACT SKYPE IF YOU HAVE PROBLEM : xavier.lp2
+
